@@ -33,18 +33,7 @@ function headMethod(...$params)
 
 function dispatch()
 {
-    try {
-        Router::dispatch();
-    } catch (Exception $e) {
-    	if(
-    		isset($_ENV['SHOW_ERRORS']) and
-    		$_ENV['SHOW_ERRORS']
-    	){	
-	        $whoops = new \Whoops\Run;
-    	    $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
-    	    $whoops->handleException($e);
-		}	    
-    }
+	Router::dispatch();
 }
 
 function view($name,$data=false)
@@ -53,12 +42,3 @@ function view($name,$data=false)
 }
 
 register_shutdown_function('dispatch');
-
-if(
-	isset($_ENV['SHOW_ERRORS']) and
-	$_ENV['SHOW_ERRORS']
-){	
-	$whoops = new \Whoops\Run;
-	$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
-	$whoops->register();
-}

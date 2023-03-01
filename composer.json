@@ -13,8 +13,5 @@
             "name": "gaucho.dev",
             "email": "119246170+devgaucho@users.noreply.github.com"
         }
-    ],
-    "require": {
-        "filp/whoops": "^2.14"
-    }
+    ]
 }
