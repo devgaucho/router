@@ -54,6 +54,11 @@ function view($name,$data=false)
 
 register_shutdown_function('dispatch');
 
-$whoops = new \Whoops\Run;
-$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
-$whoops->register();
+if(
+	isset($_ENV['SHOW_ERRORS']) and
+	$_ENV['SHOW_ERRORS']
+){	
+	$whoops = new \Whoops\Run;
+	$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+	$whoops->register();
+}
