@@ -17,6 +17,18 @@ function get(...$params){
 function headMethod(...$params){
     Router::head(...$params);
 }
+function mustache($templateName,$data=[]){
+	$str=__DIR__.'/../../view/'.$templateName.'.html';
+	$str=realpath($str);
+	if(file_exists($str)){
+		$obj=new Mustache_Engine(['entity_flags'=>ENT_QUOTES]);	
+		$str=file_get_contents($str);
+		return $obj->render($str,$data);
+	}else{
+		$str=htmlentities($str);
+		die('template <b>'.$str.'</b> not found');
+	}
+}
 function options(...$params){
     Router::options(...$params);
 }
