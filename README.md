@@ -20,6 +20,7 @@ get('{name}',function($name){
 	code(200);
 	print 'hello '.$name;
 });
+```
 
 ### Apache
 
