@@ -10,6 +10,7 @@ composer require gaucho/router
 
 ```php
 <?php
+require 'vendor/autoload.php';
 get('/',function(){
 	print 'hello world';
 });
