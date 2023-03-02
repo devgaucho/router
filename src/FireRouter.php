@@ -18,7 +18,7 @@ function headMethod(...$params){
     Router::head(...$params);
 }
 function mustache($templateName,$data=[]){
-	$str=__DIR__.'/../../view/'.$templateName.'.html';
+	$str=__DIR__.'/../../../../view/'.$templateName.'.html';
 	$str=realpath($str);
 	if(file_exists($str)){
 		$obj=new Mustache_Engine(['entity_flags'=>ENT_QUOTES]);	
