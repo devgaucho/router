@@ -1,7 +1,6 @@
-# router
+# Router
 
-Roteador PHP simples baseado no código do [Pinatra](https://pinatra.github.io/routing.html)
-
+Roteador PHP simples baseado no código do [Pinatra](https://pinatra.github.io/routing.html) (versão PHP do roteador do Sinatra https://sinatrarb.com/)
 
 ## Instalação
 
