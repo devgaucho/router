@@ -1,5 +1,8 @@
 # router
 
+Roteador PHP simples baseado no código do [Pinatra](https://pinatra.github.io/routing.html)
+
+
 ## Instalação
 
 ```bash
