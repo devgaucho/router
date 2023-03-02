@@ -2,6 +2,9 @@
 
 use gaucho\Router;
 
+function code($httpCode){
+	http_response_code($httpCode);
+}
 function delete(...$params){
     Router::delete(...$params);
 }
