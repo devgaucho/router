@@ -26,15 +26,19 @@ function json($data,$print=true){
 		return $str;
 	}
 }
-function mustache($templateName,$data=[]){
+function mustache($templateName,$data='',$print=false){
 	$str=__DIR__.'/../../../../view/'.$templateName.'.html';
 	$str=realpath($str);
 	if(file_exists($str)){
 		$obj=new Mustache_Engine(['entity_flags'=>ENT_QUOTES]);	
 		$str=file_get_contents($str);
-		return $obj->render($str,$data);
+		$str=$obj->render($str,$data);
+		if($print){
+			print $str;
+		}else{
+			return $str;
+		}	
 	}else{
-		$str=htmlentities($str);
 		die('template <b>'.$templateName.'</b> not found');
 	}
 }
@@ -74,4 +78,7 @@ function segment($segmentId=null){
         }
     }
 }	
+function view($name,$data='',$print=false){
+	return mustache($name,$data,$print);
+}
 register_shutdown_function('dispatch');
