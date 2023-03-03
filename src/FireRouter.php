@@ -17,6 +17,15 @@ function get(...$params){
 function headMethod(...$params){
     Router::head(...$params);
 }
+function json($data,$print=true){
+	$str=json_encode($data,JSON_PRETTY_PRINT);
+	if($print){
+	    header('Content-Type: application/json');
+	    die($str);
+	}else{
+		return $str;
+	}
+}
 function mustache($templateName,$data=[]){
 	$str=__DIR__.'/../../../../view/'.$templateName.'.html';
 	$str=realpath($str);
