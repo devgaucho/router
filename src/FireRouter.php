@@ -26,7 +26,7 @@ function mustache($templateName,$data=[]){
 		return $obj->render($str,$data);
 	}else{
 		$str=htmlentities($str);
-		die('template <b>'.$str.'</b> not found');
+		die('template <b>'.$templateName.'</b> not found');
 	}
 }
 function options(...$params){
