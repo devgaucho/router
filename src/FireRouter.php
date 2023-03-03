@@ -78,7 +78,7 @@ function segment($segmentId=null){
         }
     }
 }	
-function view($name,$data='',$print=false){
+function view($name,$data='',$print=true){
 	return mustache($name,$data,$print);
 }
 register_shutdown_function('dispatch');
