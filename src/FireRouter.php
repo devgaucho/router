@@ -26,7 +26,7 @@ function json($data,$print=true){
 		return $str;
 	}
 }
-function mustache($templateName,$data='',$print=false){
+function mustache($templateName,$data='',$print=true){
 	$str=__DIR__.'/../../../../view/'.$templateName.'.html';
 	$str=realpath($str);
 	if(file_exists($str)){
