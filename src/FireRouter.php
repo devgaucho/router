@@ -9,13 +9,22 @@ function delete(...$params){
     Router::delete(...$params);
 }
 function dispatch(){
-	Router::dispatch();
+	if(!isCli()){
+		Router::dispatch();
+	}
 }
 function get(...$params){
     Router::get(...$params);
 }
 function headMethod(...$params){
     Router::head(...$params);
+}
+function isCli(){
+	if (php_sapi_name() == "cli") {
+		return true;
+	} else {
+		return false;
+	}
 }
 function json($data,$print=true){
 	$str=json_encode($data,JSON_PRETTY_PRINT);
@@ -78,6 +87,17 @@ function segment($segmentId=null){
         }
     }
 }	
+function showErrors($bool=true){
+    if($bool){
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
+    }else{
+        ini_set('display_errors', 0);
+        ini_set('display_startup_errors', 0);
+        error_reporting(0);
+    }
+}
 function view($name,$data='',$print=true){
 	return mustache($name,$data,$print);
 }
