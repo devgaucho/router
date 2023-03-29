@@ -225,6 +225,9 @@ class Router {
     if ($routeMatch == false) {
       if (!self::$error_callback) {
         self::$error_callback = function() {
+        if(function_exists('notFound')){
+        	notFound();
+        }
           // echo '404';
           // throw new \Exception('404 Not Found', 1);
         };
