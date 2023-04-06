@@ -6,7 +6,7 @@
         "psr-4": {
             "gaucho\\": "src/"
         },
-        "files": ["src/FireRouter.php"]        
+        "files": ["src/GlobalFunctions.php"]        
     },
     "authors": [
         {
