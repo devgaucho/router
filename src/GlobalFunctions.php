@@ -1,5 +1,6 @@
 <?php
 
+use gaucho\Env;
 use gaucho\Router;
 
 function asset($urls,$autoIndent=true){
@@ -40,11 +41,12 @@ function delete(...$params){
     Router::delete(...$params);
 }
 function dispatch(){
-    plugins();
-    showErrors();
-    if(!isCli()){
-      Router::dispatch();
-  }
+	new Env();
+	plugins();
+	showErrors();
+	if(!isCli()){
+		Router::dispatch();
+  	}
 }
 function end_time($start_str){
     $end_str=microtime(1);

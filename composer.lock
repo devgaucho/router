@@ -4,8 +4,45 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d8e3173175c7a3d55cf8a48b82bc4dcc",
+    "content-hash": "d1561be698d0ae5e2fef5bf9af2ee3f9",
     "packages": [
+        {
+            "name": "gaucho/env",
+            "version": "v0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/devgaucho/env.git",
+                "reference": "36421261c94dc95bc99cf9073e150ea9733bf9b9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/devgaucho/env/zipball/36421261c94dc95bc99cf9073e150ea9733bf9b9",
+                "reference": "36421261c94dc95bc99cf9073e150ea9733bf9b9",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "gaucho\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "gaucho.dev",
+                    "email": "119246170+devgaucho@users.noreply.github.com"
+                }
+            ],
+            "description": "Registers environment variables from a .env file (only 40 lines of code!)",
+            "support": {
+                "issues": "https://github.com/devgaucho/env/issues",
+                "source": "https://github.com/devgaucho/env/tree/v0.2.0"
+            },
+            "time": "2023-01-29T20:29:07+00:00"
+        },
         {
             "name": "mustache/mustache",
             "version": "v2.14.2",
@@ -65,5 +102,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }

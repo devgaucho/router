@@ -15,6 +15,7 @@
         }
     ],
     "require": {
-        "mustache/mustache": "^2.14"
+        "mustache/mustache": "^2.14",
+        "gaucho/env": "^0.2.0"
     }
 }
