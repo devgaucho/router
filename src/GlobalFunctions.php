@@ -86,7 +86,7 @@ function json($data,$print=true){
       return $str;
   }
 }
-function mustache($templateName,$data=[],$print=true){
+function mustache($templateName,$data=[],$print=true,$indent=false){
 	if(isset($_ENV['THEME'])){
 		$str=__DIR__.'/../../../../view/'.$_ENV['THEME'].'/'.$templateName.'.html';
 	}else{
@@ -102,6 +102,20 @@ function mustache($templateName,$data=[],$print=true){
 			}
 		}
 		$str=file_get_contents($str);
+		if($indent){
+			$i=1;
+			$tab=null;
+			while($i<=$indent){
+				$tab.=chr(9);
+			}
+			$arr=explode(PHP_EOL,$str);
+			foreach($arr as $key=>$value){
+				if($key<>0){
+					$arr[$key]=$tab.$value;
+				}
+			}
+			$str=implode(PHP_EOL,$arr);
+		}
 		$str=$obj->render($str,$data);
 		if($print){
 			print $str;
