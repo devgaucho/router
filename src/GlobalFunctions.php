@@ -9,7 +9,11 @@ function asset($urls,$print=true,$autoIndent=true){
         $urls=$arr;
     }
     foreach($urls as $key=>$url){
-        $filename=__DIR__.'/../../../../'.$url;
+	if(isset($_ENV['THEME'])){
+		$filename=__DIR__.'/../../../../'.$_ENV['THEME'].'/'.$url;
+	}else{
+        	$filename=__DIR__.'/../../../../'.$url;
+	}
         $path_parts=pathinfo($url);
         $ext=$path_parts['extension'];
 	$out=null;
