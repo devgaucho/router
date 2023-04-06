@@ -86,7 +86,7 @@ function json($data,$print=true){
       return $str;
   }
 }
-function mustache($templateName,$data='',$print=true){
+function mustache($templateName,$data=[],$print=true){
 	if(isset($_ENV['THEME'])){
 		$str=__DIR__.'/../../../../view/'.$_ENV['THEME'].'/'.$templateName.'.html';
 	}else{
@@ -95,6 +95,12 @@ function mustache($templateName,$data='',$print=true){
 	$str=realpath($str);
 	if(file_exists($str)){
 		$obj=new Mustache_Engine(['entity_flags'=>ENT_QUOTES]);	
+		//adicionar as includes como variáveis
+		if(isset($data['include'])){
+			foreach($data['include'] as $includeName=>$includeData){
+				$data[$includeName]=mustache($includeName,$includeData,false);
+			}
+		}
 		$str=file_get_contents($str);
 		$str=$obj->render($str,$data);
 		if($print){
