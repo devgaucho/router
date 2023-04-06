@@ -3,7 +3,7 @@
 use gaucho\Env;
 use gaucho\Router;
 
-function asset($urls,$autoIndent=true){
+function asset($urls,$print=true,$autoIndent=true){
     if(is_string($urls)){
         $arr[]=$urls;
         $urls=$arr;
@@ -12,6 +12,7 @@ function asset($urls,$autoIndent=true){
         $filename=__DIR__.'/../../../../'.$url;
         $path_parts=pathinfo($url);
         $ext=$path_parts['extension'];
+	$out=null;
         if(file_exists($filename)){
             $md5=md5_file($filename);
             if(isset($_ENV['SITE_URL'])){
@@ -20,18 +21,22 @@ function asset($urls,$autoIndent=true){
                 $url=$url."?$md5";
             }
             if($autoIndent and $key<>0){
-                print '    ';
+                $out.='    ';
             }
             if($ext=='css'){
-                print '<link rel="stylesheet" href="'.$url.'" />';
+                $out.='<link rel="stylesheet" href="'.$url.'" />';
             }
             if($ext=='js'){
-                $js_str='<script type="text/javascript" src="';
-                $js_str.=$url.'"></script>';
-                print $js_str;
+                $out.='<script type="text/javascript" src="';
+                $out.=$url.'"></script>';
             }
-            print PHP_EOL;
+            $out.=PHP_EOL;
         }
+	if($print){
+		print $out;
+	}else{
+		return $out;
+	}
     }
 }
 function code($httpCode){
