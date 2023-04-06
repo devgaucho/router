@@ -76,7 +76,11 @@ function json($data,$print=true){
   }
 }
 function mustache($templateName,$data='',$print=true){
-	$str=__DIR__.'/../../../../view/'.$templateName.'.html';
+	if(isset($_ENV['THEME']){
+		$str=__DIR__.'/../../../../view/'.$_ENV['THEME'].'/'.$templateName.'.html';
+	}else{
+		$str=__DIR__.'/../../../../view/'.$templateName.'.html';
+	}
 	$str=realpath($str);
 	if(file_exists($str)){
 		$obj=new Mustache_Engine(['entity_flags'=>ENT_QUOTES]);	
