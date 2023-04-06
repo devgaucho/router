@@ -98,7 +98,7 @@ function mustache($templateName,$data=[],$print=true,$indent=false){
 		//adicionar as includes como variáveis
 		if(isset($data['include'])){
 			foreach($data['_include'] as $includeName=>$includeData){
-				if(isset($includeData['_indent']){
+				if(isset($includeData['_indent'])){
 					$includeIndent=$includeData['_indent'];
 				}else{
 					$includeIndent=false;
