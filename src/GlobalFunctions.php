@@ -36,6 +36,7 @@ function asset($urls,$print=true,$autoIndent=true){
             }
             $out.=PHP_EOL;
         }
+	$out=trim($out);
 	if($print){
 		print $out;
 	}else{
