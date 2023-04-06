@@ -97,8 +97,13 @@ function mustache($templateName,$data=[],$print=true,$indent=false){
 		$obj=new Mustache_Engine(['entity_flags'=>ENT_QUOTES]);	
 		//adicionar as includes como variáveis
 		if(isset($data['include'])){
-			foreach($data['include'] as $includeName=>$includeData){
-				$data[$includeName]=mustache($includeName,$includeData,false);
+			foreach($data['_include'] as $includeName=>$includeData){
+				if(isset($includeData['_indent']){
+					$includeIndent=$includeData['_indent'];
+				}else{
+					$includeIndent=false;
+				}
+				$data[$includeName]=mustache($includeName,$includeData,false,$includeIndent);
 			}
 		}
 		$str=file_get_contents($str);
