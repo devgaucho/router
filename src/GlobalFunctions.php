@@ -86,7 +86,12 @@ function json($data,$print=true){
       return $str;
   }
 }
-function mustache($templateName,$data=[],$print=true,$indent=false){
+function mustache($templateName,$data=[],$print=true){
+	if(isset($data['_indent'])){
+		$indent=$data['_indent'];
+	}else{
+		$indent=false;
+	}
 	if(isset($_ENV['THEME'])){
 		$str=__DIR__.'/../../../../view/'.$_ENV['THEME'].'/'.$templateName.'.html';
 	}else{
@@ -96,21 +101,16 @@ function mustache($templateName,$data=[],$print=true,$indent=false){
 	if(file_exists($str)){
 		$obj=new Mustache_Engine(['entity_flags'=>ENT_QUOTES]);	
 		//adicionar as includes como variáveis
-		if(isset($data['include'])){
+		if(isset($data['_include'])){
 			foreach($data['_include'] as $includeName=>$includeData){
-				if(isset($includeData['_indent'])){
-					$includeIndent=$includeData['_indent'];
-				}else{
-					$includeIndent=false;
-				}
-				$data[$includeName]=mustache($includeName,$includeData,false,$includeIndent);
+				$data[$includeName]=mustache($includeName,$includeData,false);
 			}
 		}
 		$str=file_get_contents($str);
 		if($indent){
 			$i=1;
 			$tab=null;
-			while($i<=$indent){
+			while($i++<=$indent){
 				$tab.=chr(9);
 			}
 			$arr=explode(PHP_EOL,$str);
