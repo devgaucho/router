@@ -87,6 +87,12 @@ function json($data,$print=true){
   }
 }
 function mustache($templateName,$data=[],$print=true){
+	if(isset($_ENV['SITE_NAME'])){
+		$data['SITE_NAME']=$_ENV['SITE_NAME'];
+	}
+	if(isset($_ENV['SITE_URL'])){
+		$data['SITE_URL']=$_ENV['SITE_URL'];
+	}
 	if(isset($data['_indent'])){
 		$indent=$data['_indent'];
 	}else{
