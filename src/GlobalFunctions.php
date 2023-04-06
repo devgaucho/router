@@ -10,7 +10,7 @@ function asset($urls,$print=true,$autoIndent=true){
     }
     foreach($urls as $key=>$url){
 	if(isset($_ENV['THEME'])){
-		$filename=__DIR__.'/../../../../'.$_ENV['THEME'].'/'.$url;
+		$filename=__DIR__.'/../../../../view/'.$_ENV['THEME'].'/'.$url;
 	}else{
         	$filename=__DIR__.'/../../../../'.$url;
 	}
