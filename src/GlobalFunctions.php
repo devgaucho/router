@@ -20,7 +20,7 @@ function asset($urls,$print=true,$autoIndent=true){
         if(file_exists($filename)){
             $md5=md5_file($filename);
             if(isset($_ENV['SITE_URL'])){
-                $url=SITE_URL.'/'.$url."?$md5";
+                $url=$_ENV['SITE_URL'].'/'.$url."?$md5";
             }else{
                 $url=$url."?$md5";
             }
