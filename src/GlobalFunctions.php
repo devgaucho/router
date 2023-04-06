@@ -136,7 +136,6 @@ function segment($segmentId=null){
     }
 }	
 function showErrors($display_errors=true){
-    $display_errors=
     if(isset($_ENV['DISPLAY_ERRORS'])){
         $display_errors=$_ENV['DISPLAY_ERRORS'];
     }
