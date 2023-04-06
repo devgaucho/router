@@ -76,7 +76,7 @@ function json($data,$print=true){
   }
 }
 function mustache($templateName,$data='',$print=true){
-	if(isset($_ENV['THEME']){
+	if(isset($_ENV['THEME'])){
 		$str=__DIR__.'/../../../../view/'.$_ENV['THEME'].'/'.$templateName.'.html';
 	}else{
 		$str=__DIR__.'/../../../../view/'.$templateName.'.html';
