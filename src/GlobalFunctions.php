@@ -11,6 +11,12 @@ if(file_exists($plugins_path_str)){
 	}
 }
 
+// caregar o .env
+new Env();
+
+// exibir erros
+show_errors();
+
 function asset($urls,$print=true,$autoIndent=true){
     if(is_string($urls)){
         $arr[]=$urls;
@@ -58,8 +64,6 @@ function delete(...$params){
     Router::delete(...$params);
 }
 function dispatch(){
-	new Env();
-	showErrors();
 	if(!isCli()){
 		Router::dispatch();
   	}
@@ -180,7 +184,7 @@ function segment($segmentId=null){
         }
     }
 }	
-function showErrors($display_errors=true){
+function show_errors($display_errors=true){
     if(isset($_ENV['DISPLAY_ERRORS'])){
         $display_errors=$_ENV['DISPLAY_ERRORS'];
     }
