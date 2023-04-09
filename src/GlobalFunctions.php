@@ -38,7 +38,7 @@ function asset($urls,$print=true,$autoIndent=true){
                 $url=$url."?$md5";
             }
             if($autoIndent and $key<>0){
-                $out.='    ';
+                $out.=chr(9).chr(9);
             }
             if($ext=='css'){
                 $out.='<link rel="stylesheet" href="'.$url.'" />';
