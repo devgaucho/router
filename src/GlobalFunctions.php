@@ -1,6 +1,6 @@
 <?php
 
-namesapace gaucho\global;
+namespace gaucho\global;
 
 use gaucho\Env;
 use gaucho\Router;
