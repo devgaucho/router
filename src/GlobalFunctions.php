@@ -1,10 +1,12 @@
 <?php
 
+namesapace gaucho\global;
+
 use gaucho\Env;
 use gaucho\Router;
 
 // carregar plugins no escopo global
-$plugins_path_str=__DIR__.'/../../../../plugin';
+$plugins_path_str=root().'/plugin';
 if(file_exists($plugins_path_str)){
 	foreach (glob($plugins_path_str.'/*.php') as $filename){
     		require_once $filename;
@@ -27,7 +29,7 @@ function asset($urls,$print=true,$autoIndent=true){
 	if(isset($_ENV['THEME'])){
 		$url='view/'.$_ENV['THEME'].'/'.$url;
 	}
-        $filename=__DIR__.'/../../../../'.$url;
+        $filename=root().'/'.$url;
         $path_parts=pathinfo($url);
         $ext=$path_parts['extension'];
         if(file_exists($filename)){
@@ -110,9 +112,10 @@ function mustache($templateName,$data=[],$print=true){
 		$indent=false;
 	}
 	if(isset($_ENV['THEME'])){
-		$str=__DIR__.'/../../../../view/'.$_ENV['THEME'].'/'.$templateName.'.html';
+		$str=root().'/view/'.$_ENV['THEME'];
+        $str.='/'.$templateName.'.html';
 	}else{
-		$str=__DIR__.'/../../../../view/'.$templateName.'.html';
+		$str=root().'/view/'.$templateName.'.html';
 	}
 	$str=realpath($str);
 	if(file_exists($str)){
@@ -163,6 +166,9 @@ function put(...$params){
 function redirect($url){
 	header('Location: '.$url);
 	die();
+}
+function root(){
+    return realpath(__DIR__.'/../../../../');
 }
 function segment($segmentId=null){
     $str=$_SERVER["REQUEST_URI"];
