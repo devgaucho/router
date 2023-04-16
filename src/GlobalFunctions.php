@@ -214,4 +214,4 @@ function start_time(){
 function view($name,$data='',$print=true){
 	return mustache($name,$data,$print);
 }
-register_shutdown_function('\dispatch');
+register_shutdown_function('\gaucho\global\dispatch');
