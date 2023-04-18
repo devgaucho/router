@@ -6,7 +6,7 @@ use gaucho\Env;
 use gaucho\Router;
 
 // carregar plugins no escopo global
-$plugins_path_str=root().'/plugin';
+$plugins_path_str=root().'/src/plugin';
 if(file_exists($plugins_path_str)){
 	foreach (glob($plugins_path_str.'/*.php') as $filename){
     		require_once $filename;
